@@ -1,3 +1,5 @@
+import CarPreview from './CarPreview.js'
+
 export default {
     props:['cars'],
     template: `
@@ -18,5 +20,8 @@ export default {
         showDetails(carId){
             this.$emit('show-details', carId)
         },
+    },
+    components: {
+        CarPreview,
     }
 }

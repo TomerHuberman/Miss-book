@@ -1,5 +1,11 @@
 import { carService } from '../services/car.service.js'
 
+import CarFilter from './CarFilter.js'
+import CarList from './CarList.js'
+
+import CarDetails from './CarDetails.js'
+import CarEdit from './CarEdit.js'
+
 export default {
     template: `
         <section class="car-index">
@@ -50,5 +56,11 @@ export default {
     created() {
         carService.query()
             .then(cars => this.cars = cars)
+    },
+    components: {
+        CarFilter,
+        CarList,
+        CarDetails,
+        CarEdit,
     }
 }
