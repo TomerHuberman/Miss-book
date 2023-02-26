@@ -4,7 +4,6 @@ import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
 const CAR_KEY = 'carDB'
-var gFilterBy = { txt: '', minSpeed: '' }
 
 _createCars()
 
