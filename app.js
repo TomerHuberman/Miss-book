@@ -1,13 +1,19 @@
 const { createApp } = Vue
 
+import AppHeader from './cmps/AppHeader.js'
+import AppFooter from './cmps/AppFooter.js'
+
 import CarIndex from './cmps/CarIndex.js'
 import CarList from './cmps/CarList.js'
 import CarPreview from './cmps/CarPreview.js'
 
+
 const options = {
     template: `
         <section class="container">
+            <AppHeader />
             <CarIndex />
+            <AppFooter />
         </section>
     `,
     data() {
@@ -17,6 +23,9 @@ const options = {
     },
 }
 const app = createApp(options)
+
+app.component('AppHeader', AppHeader)
+app.component('AppFooter', AppFooter)
 
 app.component('CarIndex', CarIndex)
 app.component('CarList', CarList)
