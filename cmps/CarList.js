@@ -3,8 +3,9 @@ export default {
     template: `
         <section class="car-list">
             <ul>
-                <li v-for="car in cars">
+                <li v-for="car in cars" :key="car.id">
                     <CarPreview :car="car"/>
+                    <button @click="showDetails(car.id)">Details</button>
                     <button @click="remove(car.id)">x</button>
                 </li>
             </ul>
@@ -13,6 +14,9 @@ export default {
     methods: {
         remove(carId) {
             this.$emit('remove', carId)
-        }
+        },
+        showDetails(carId){
+            this.$emit('show-details', carId)
+        },
     }
 }

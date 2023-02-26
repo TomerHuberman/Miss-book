@@ -7,6 +7,7 @@ import CarIndex from './cmps/CarIndex.js'
 import CarList from './cmps/CarList.js'
 import CarPreview from './cmps/CarPreview.js'
 
+import CarDetails from './cmps/CarDetails.js'
 
 const options = {
     template: `
@@ -30,5 +31,7 @@ app.component('AppFooter', AppFooter)
 app.component('CarIndex', CarIndex)
 app.component('CarList', CarList)
 app.component('CarPreview', CarPreview)
+
+app.component('CarDetails', CarDetails)
 
 app.mount('#app')
