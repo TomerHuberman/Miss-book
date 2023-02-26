@@ -11,6 +11,7 @@ export default {
                 v-if="selectedCar" 
                 @hide-details="selectedCar = null"
                 :car="selectedCar"/>
+            <CarEdit @car-saved="onSaveCar"/>
         </section>
     `,
     data() {
@@ -29,6 +30,9 @@ export default {
         },
         showCarDetails(carId) {
             this.selectedCar = this.cars.find(car => car.id === carId)
+        },
+        onSaveCar(newCar) {
+            this.cars.unshift(newCar)
         }
     },
     created() {
