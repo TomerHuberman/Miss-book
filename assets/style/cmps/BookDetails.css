@@ -1,14 +1,14 @@
-.car-details {
+.book-details {
     display: grid;
     
     padding: 10px;
     background-color: lightsteelblue;
     margin-block-start: 10px;
 }
-.car-details img{
+.book-details img{
     width: 200px;
     justify-self: center;
 }
-.car-details button{
+.book-details button{
     justify-self: end;
 }

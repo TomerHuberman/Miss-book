@@ -1,4 +1,4 @@
-.car-edit form{
+.book-edit form{
     display: grid;
     justify-items: start;
     gap: 10px;
@@ -6,6 +6,6 @@
     padding: 10px;
     background-color: rgb(250, 212, 142);
 }
-.car-edit form button {
+.book-edit form button {
     justify-self: end;
 }

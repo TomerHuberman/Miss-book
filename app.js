@@ -3,7 +3,7 @@ const { createApp } = Vue
 import AppHeader from './cmps/AppHeader.js'
 import AppFooter from './cmps/AppFooter.js'
 
-import CarIndex from './cmps/CarIndex.js'
+import BookIndex from './cmps/BookIndex.js'
 
 import HomePage from './pages/HomePage.js'
 import AboutPage from './pages/AboutPage.js'
@@ -14,7 +14,7 @@ const options = {
             <AppHeader @setRoute="route = $event"/>
             <main class="router-view">
                 <HomePage v-if="route === 'HomePage'"/>
-                <CarIndex v-if="route === 'CarIndex'"/>
+                <BookIndex v-if="route === 'BookIndex'"/>
                 <AboutPage v-if="route === 'AboutPage'"/>
             </main>
             <AppFooter />
@@ -28,7 +28,7 @@ const options = {
     components: {
         AppHeader,
         AppFooter,
-        CarIndex,
+        BookIndex,
         HomePage,
         AboutPage,
     }

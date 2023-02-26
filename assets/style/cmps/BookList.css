@@ -1,4 +1,4 @@
-.car-list ul {
+.book-list ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 10px;
@@ -7,7 +7,7 @@
     background-color: lightblue;
     list-style-type: none;
 }
-.car-list ul li{
+.book-list ul li{
     padding: 10px;
     background-color: darkseagreen;
 }

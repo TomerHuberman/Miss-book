@@ -34,6 +34,16 @@
     list-style-type: none;
 }
 
+/* price color */
+
+.high-price{
+    color: var(--clrHighPrice);
+}
+
+.low-price{
+    color: var(--clrLowPrice);
+}
+
 /* font awsome */
 
 .fa {
