@@ -11,17 +11,24 @@ import CarPreview from './cmps/CarPreview.js'
 import CarDetails from './cmps/CarDetails.js'
 import CarEdit from './cmps/CarEdit.js'
 
+import HomePage from './pages/HomePage.js'
+import AboutPage from './pages/AboutPage.js'
+
 const options = {
     template: `
         <section class="container">
-            <AppHeader />
-            <CarIndex />
+            <AppHeader @setRoute="route = $event"/>
+            <main class="router-view">
+                <HomePage v-if="route === 'HomePage'"/>
+                <CarIndex v-if="route === 'CarIndex'"/>
+                <AboutPage v-if="route === 'AboutPage'"/>
+            </main>
             <AppFooter />
         </section>
     `,
     data() {
         return {
-            greet: 'Hi, welcome to Vue!',
+            route: 'CarIndex',
         }
     },
 }
@@ -37,5 +44,8 @@ app.component('CarPreview', CarPreview)
 
 app.component('CarDetails', CarDetails)
 app.component('CarEdit', CarEdit)
+
+app.component('HomePage', HomePage)
+app.component('AboutPage', AboutPage)
 
 app.mount('#app')
