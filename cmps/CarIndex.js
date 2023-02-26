@@ -3,21 +3,24 @@ import { carService } from '../services/car.service.js'
 export default {
     template: `
         <section class="car-index">
+            <CarFilter @filter="setFilterBy"/>
             <CarList 
-                :cars="cars" 
+                :cars="filteredCars" 
+                v-if="cars"
                 @remove="removeCar" 
                 @show-details="showCarDetails" />
+            <CarEdit @car-saved="onSaveCar"/>
             <CarDetails 
                 v-if="selectedCar" 
                 @hide-details="selectedCar = null"
                 :car="selectedCar"/>
-            <CarEdit @car-saved="onSaveCar"/>
         </section>
     `,
     data() {
         return {
             cars: null,
             selectedCar: null,
+            filterBy: {},
         }
     },
     methods: {
@@ -33,6 +36,15 @@ export default {
         },
         onSaveCar(newCar) {
             this.cars.unshift(newCar)
+        },
+        setFilterBy(filterBy) {
+            this.filterBy = filterBy
+        }
+    },
+    computed: {
+        filteredCars() {
+            const regex = new RegExp(this.filterBy.vendor, 'i')
+            return this.cars.filter(car => regex.test(car.vendor))
         }
     },
     created() {

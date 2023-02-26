@@ -4,6 +4,7 @@ import AppHeader from './cmps/AppHeader.js'
 import AppFooter from './cmps/AppFooter.js'
 
 import CarIndex from './cmps/CarIndex.js'
+import CarFilter from './cmps/CarFilter.js'
 import CarList from './cmps/CarList.js'
 import CarPreview from './cmps/CarPreview.js'
 
@@ -30,6 +31,7 @@ app.component('AppHeader', AppHeader)
 app.component('AppFooter', AppFooter)
 
 app.component('CarIndex', CarIndex)
+app.component('CarFilter', CarFilter)
 app.component('CarList', CarList)
 app.component('CarPreview', CarPreview)
 

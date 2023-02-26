@@ -15,6 +15,7 @@
 @import 'cmps/AppHeader.css';
 @import 'cmps/CarIndex.css';
 @import 'cmps/AppFooter.css';
+@import 'cmps/CarFilter.css';
 @import 'cmps/CarList.css';
 
 @import 'cmps/CarDetails.css';
