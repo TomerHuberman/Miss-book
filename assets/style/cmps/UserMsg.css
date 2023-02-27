@@ -8,6 +8,7 @@
     opacity: 0;
     width: 280px;
     text-align: center;
+    transition: opacity 1s;
 }
 
 .user-msg p {
@@ -20,7 +21,6 @@
 
 .user-msg.show {
     opacity: 1;
-    transition: opacity 1.5s;
 }
 
 .user-msg.error {

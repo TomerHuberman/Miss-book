@@ -2,19 +2,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 20px;
+    gap: 20px;
+    align-items: start;
 
     background-color: lightsteelblue;
     margin-block-start: 10px;
     justify-items: center;
 
     box-shadow: 0px 0px 1px 0px black;
-    align-items: center;
     align-content: center;
     position: relative;
 }
 
 .book-details .book-img {
-    width: 200px;
+    max-height: 100%;
     justify-self: center;
     grid-column: 1;
     /* grid-row: 1 / 6; */
@@ -27,15 +28,15 @@
 
 }
 
-.book-info > h3 {
+.book-info>h3 {
     display: flex;
 }
 
-.book-info >*{
+.book-info>* {
     font-weight: 700;
 }
 
-.book-info span{
+.book-info span {
     margin-inline-start: 5px;
     align-self: end;
     font-size: 1rem;

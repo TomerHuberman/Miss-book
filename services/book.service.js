@@ -13,6 +13,7 @@ export const bookService = {
     remove,
     save,
     getEmptyBook,
+    addReview,
 }
 
 function query(filterBy = {}) {
@@ -45,16 +46,30 @@ function save(book) {
     }
 }
 
+function addReview(bookId, review) {
+    review.id = utilService.makeId()
+    return get(bookId)
+        .then(book => {
+            if (!book.reviews) {
+                book.reviews = [review]
+            } else {
+                book.reviews.push(review)
+            }
+            return book
+        })
+        .then(save)
+}
+
 function getEmptyBook(title = '', amount = 50) {
     return {
-         id: '',
+        id: '',
         title,
-        listPrice:{
+        listPrice: {
             amount,
             currencyCode: "EUR",
             isOnSale: false
-        }, 
-        }
+        },
+    }
 }
 
 function _createBooks() {

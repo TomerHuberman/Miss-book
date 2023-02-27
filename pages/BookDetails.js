@@ -1,12 +1,13 @@
 import { bookService } from "../services/book.service.js"
 
+import ReviewPreview from "../cmps/ReviewPreview.js"
 import LongTxt from "../cmps/LongTxt.js"
+import AddReview from "./AddReview.js"
 
 export default {
     // props:['bookId'],
     template: `
         <section class="book-details" v-if="book">
-            
             <img v-if="book.listPrice.isOnSale" class="sale" src="assets/img/sale.png" />
             <img class="book-img" :src="book.thumbnail" />
             <!-- <h1>{{$route.query.user}}</h1> -->
@@ -20,11 +21,22 @@ export default {
                 <h3>Published Date:  <span>{{book.publishedDate}} {{ newOrOld }}</span></h3>
                 <h3>Language: <span>{{ book.language }}</span></h3>
                 <LongTxt :txt="book.description" />
-
-                <RouterLink to="/book">Back to list</RouterLink>
+                
+                <nav>
+                    <RouterLink :to="{name:'review', params:{bookId:book.id}}">Add your review</RouterLink> | 
+                    <RouterLink to="/book">Back to list</RouterLink>
+                </nav>
             </div>
+            <ul class="clean-list">
+                <li v-for="review in book.reviews" v-if="book.reviews" :key="review.id">
+                        <ReviewPreview :review="review"/>
+                       <button @click="remove(review.id)">x</button>
 
-
+                    <!-- <pre>
+                        {{review}}
+                    </pre> -->
+                </li>
+            </ul>
         </section>
     `,
     data() {
@@ -33,13 +45,18 @@ export default {
         }
     },
     created() {
-        console.log('psops:', this.bookId); 
+        console.log('psops:', this.bookId);
         console.log('Params:', this.$route)
         const { bookId } = this.$route.params
         bookService.get(bookId)
             .then(book => this.book = book)
     },
     methods: {
+        remove(reviewId) {
+            const idx =this.book.reviews.findIndex(review => review.id === reviewId)
+            this.book.reviews.splice(idx, 1)
+            bookService.save(this.book)
+        }
     },
     computed: {
         readingLevel() {
@@ -72,5 +89,7 @@ export default {
     },
     components: {
         LongTxt,
+        AddReview,
+        ReviewPreview,
     }
 }
