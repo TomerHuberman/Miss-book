@@ -7,7 +7,7 @@ export default {
     template: `
         <section class="book-details" v-if="book">
             
-            <img v-if="book.listPrice.isOnSale" class="sale" src="../assets/img/sale.png" />
+            <img v-if="book.listPrice.isOnSale" class="sale" src="assets/img/sale.png" />
             <img class="book-img" :src="book.thumbnail" />
             <!-- <h1>{{$route.query.user}}</h1> -->
             <div class="book-info">
