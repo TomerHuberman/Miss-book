@@ -5,7 +5,7 @@ export default {
             <img v-if="book.listPrice.isOnSale" class="sale" src="../assets/img/sale.png" />
             <h2>{{ book.title }}</h2>
             <img :src="book.thumbnail" />
-            <h3 >Price: <span :class="lowOrHighClass">{{ book.listPrice.amount }}</span> {{ book.listPrice.currencyCode }} </h3>
+            <h3 >Price: <span :class="lowOrHighClass">{{ formattedPrice }}</span></h3>
         </article>
     `,
     computed: {
@@ -15,5 +15,9 @@ export default {
                 'low-price': this.book.listPrice.amount < 20,
             }
         },
+        formattedPrice(){
+            const {amount, currencyCode} = this.book.listPrice
+            return new Intl.NumberFormat('en', {style:'currency', currency:currencyCode}).format(amount)
+          },
     }
 }

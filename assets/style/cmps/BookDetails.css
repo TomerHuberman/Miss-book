@@ -1,37 +1,55 @@
 .book-details {
     display: grid;
-    grid-auto-flow: dense;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
     padding: 20px;
-    width: 50vw;
-    height: 50vh;
+
     background-color: lightsteelblue;
     margin-block-start: 10px;
     justify-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 0px 5px 0px black;
+
+    box-shadow: 0px 0px 1px 0px black;
     align-items: center;
     align-content: center;
+    position: relative;
 }
-.book-details .book-img{
+
+.book-details .book-img {
     width: 200px;
     justify-self: center;
     grid-column: 1;
-    grid-row: 1 / 6;
+    /* grid-row: 1 / 6; */
     box-shadow: 0 0 2px 1px white;
 
 }
-.book-details button{
+
+.book-details .book-info {
+    display: grid;
+
+}
+
+.book-info > h3 {
+    display: flex;
+}
+
+.book-info >*{
+    font-weight: 700;
+}
+
+.book-info span{
+    margin-inline-start: 5px;
+    align-self: end;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.book-details button {
     justify-self: end;
 }
 
-.book-details .sale{
+.book-details .sale {
     width: 190px;
     position: absolute;
-    left: -71px;
-    top: -71px;
+    left: -48px;
+    top: -47px;
     rotate: -40deg;
 }

@@ -10,7 +10,7 @@ export default {
                 v-model="filterBy.amount"
                 @input="filter"
                 min="0"
-                max="200"
+                max="800"
                 step="10"
                 type="range" />
                 <span :class="lowOrHighClass">{{filterBy.amount}}</span>

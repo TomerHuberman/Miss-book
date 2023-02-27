@@ -7,7 +7,9 @@ export default {
             <ul>
                 <li v-for="book in books" :key="book.id">
                     <BookPreview :book="book"/>
-                    <button @click="showDetails(book.id)">Details</button>
+                    <RouterLink :to="{name:'details', params:{bookId:book.id}, query:{user:'tomer'}}">Details</RouterLink> |
+                    <RouterLink :to="'/book/edit/'+book.id">Edit</RouterLink> |
+                    <!-- <button hidden @click="showDetails(book.id)">Details</button> -->
                     <button @click="remove(book.id)">x</button>
                 </li>
             </ul>
@@ -16,9 +18,6 @@ export default {
     methods: {
         remove(bookId) {
             this.$emit('remove', bookId)
-        },
-        showDetails(bookId){
-            this.$emit('show-details', bookId)
         },
     },
     components: {
