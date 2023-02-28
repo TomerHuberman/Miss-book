@@ -2,13 +2,15 @@ import { bookService } from '../services/book.service.js'
 
 import BookFilter from '../cmps/BookFilter.js'
 import BookList from '../cmps/BookList.js'
-import { eventBusService } from '../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
 export default {
     template: `
         <section class="book-index">
             <BookFilter @filter="setFilterBy"/>
-            <RouterLink to="/book/edit">Add a book</RouterLink>
+            <RouterLink to="/book/edit">Add a book</RouterLink> | 
+            <RouterLink to="/book/add">Add a google book</RouterLink>
+
             <BookList 
                 :books="filteredBooks" 
                 v-if="books"
@@ -35,8 +37,9 @@ export default {
                 .then(() => {
                     const idx = this.books.findIndex(book => book.id === bookId)
                     this.books.splice(idx, 1)
-                    eventBusService.emit('show-msg', { txt: 'Book removed', type: 'success' })
+                    showSuccessMsg('Book removed')
                 })
+                .catch(err => showErrorMsg('Book remove failed'))
         },
         onSaveBook(newBook) {
             this.books.unshift(newBook)

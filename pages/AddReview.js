@@ -1,5 +1,5 @@
 import { bookService } from "../services/book.service.js"
-import { eventBusService } from "../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 export default {
     // props: ['bookId'],
@@ -26,24 +26,19 @@ export default {
                 rate: 1,
                 date: Date.now(),
             },
-            bookId: null
         }
     },
     created() {
-        const { bookId } = this.$route.params
-        this.bookId = bookId
-        console.log("this.bookId: ", this.bookId);
-        // bookService.get(bookId)
-        //     .then(book => this.book = book)
     },
     methods: {
         addReview() {
             bookService.addReview(this.bookId, this.review)
                 .then(() => {
-                    eventBusService.emit('show-msg', { txt: 'Review Added', type: 'success' })
+                    showSuccessMsg('Review Added')
                     this.resetReview()
                     this.$router.push(this.bookDetails)
                 })
+                .catch(err => showErrorMsg('Review Add Fail'))
 
         },
         resetReview() {
@@ -54,6 +49,9 @@ export default {
     computed: {
         bookDetails() {
             return '/book/' + this.bookId
+        },
+        bookId(){
+            return this.$route.params.bookId
         }
     }
 }

@@ -10,6 +10,7 @@ export default {
         <section class="book-details" v-if="book">
             <img v-if="book.listPrice.isOnSale" class="sale" src="assets/img/sale.png" />
             <img class="book-img" :src="book.thumbnail" />
+            
             <!-- <h1>{{$route.query.user}}</h1> -->
             <div class="book-info">
                 <h2>title: {{ book.title }}</h2>
@@ -24,13 +25,15 @@ export default {
                 
                 <nav>
                     <RouterLink :to="{name:'review', params:{bookId:book.id}}">Add your review</RouterLink> | 
-                    <RouterLink to="/book">Back to list</RouterLink>
+                    <RouterLink to="/book">Back to list</RouterLink> |
+                    <RouterLink :to="'/book/' + book.prevBookId">Previous Book</RouterLink> |
+                    <RouterLink :to="'/book/' + book.nextBookId">Next Book</RouterLink>
                 </nav>
             </div>
             <ul class="clean-list">
                 <li v-for="review in book.reviews" v-if="book.reviews" :key="review.id">
                         <ReviewPreview :review="review"/>
-                       <button @click="remove(review.id)">x</button>
+                       <button @click="remove(book.id, review.id)">x</button>
 
                     <!-- <pre>
                         {{review}}
@@ -45,20 +48,22 @@ export default {
         }
     },
     created() {
-        console.log('psops:', this.bookId);
-        console.log('Params:', this.$route)
-        const { bookId } = this.$route.params
-        bookService.get(bookId)
-            .then(book => this.book = book)
+        this.loadBook()
     },
     methods: {
-        remove(reviewId) {
-            const idx =this.book.reviews.findIndex(review => review.id === reviewId)
-            this.book.reviews.splice(idx, 1)
-            bookService.save(this.book)
-        }
+        remove(bookId, reviewId) {
+            bookService.removeReview(bookId, reviewId)
+                .then(book => this.book = book)
+        },
+        loadBook() {
+            bookService.get(this.bookId)
+                .then(book => this.book = book)
+        },
     },
     computed: {
+        bookId() {
+            return this.$route.params.bookId
+        },
         readingLevel() {
             if (this.book.pageCount < 100) return 'Light Reading'
             if (this.book.pageCount > 500) return 'Serious Reading'
@@ -87,9 +92,14 @@ export default {
             return this.book.categories.join(', ');
         },
     },
+    watch: {
+        bookId() {
+            this.loadBook()
+        },
+    },
     components: {
         LongTxt,
         AddReview,
         ReviewPreview,
-    }
+    },
 }
