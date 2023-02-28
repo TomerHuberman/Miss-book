@@ -53,17 +53,23 @@ function removeReview(bookId, reviewId) {
 }
 
 function addGoogleBook(googleBook) {
-    const { volumeInfo: bookInfo } = googleBook
+    // const { volumeInfo:{ bookInfo:{authors,categories, imageLinks}}} = googleBook
+    const { volumeInfo: bookInfo} = googleBook
     const book = getEmptyBook()
+    // const EmptyGoogleBook = {
+    //     ...book,
+    //     title,
+    //     authors
+    // }
     book.title = bookInfo.title,
-    book.authors = bookInfo.authors,
-    book.categories = bookInfo.categories,
-    book.description = bookInfo.description,
-    book.language = bookInfo.language,
-    book.pageCount = bookInfo.pageCount,
-    book.publishedDate = bookInfo.publishedDate.split('-')[0],
-    book.subtitle = bookInfo.subtitle,
-    book.thumbnail = bookInfo.imageLinks.thumbnail
+        book.authors = bookInfo.authors,
+        book.categories = bookInfo.categories,
+        book.description = bookInfo.description,
+        book.language = bookInfo.language,
+        book.pageCount = bookInfo.pageCount,
+        book.publishedDate = bookInfo.publishedDate.split('-')[0],
+        book.subtitle = bookInfo.subtitle,
+        book.thumbnail = bookInfo.imageLinks.thumbnail
     return save(book)
 }
 

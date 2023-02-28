@@ -1,14 +1,23 @@
 export default {
     template: `
         <header class="app-header">
-            <h1>Books</h1>
+            <div className="logo"></div>
+            <h1>Miss Book</h1>
             <nav>
-                <RouterLink to="/">Home</RouterLink> |
-                <RouterLink to="/book">Our books</RouterLink> |
-                <RouterLink to="/about">About</RouterLink>
+                <RouterLink v-for="(route, idx) in routes" :to="route.path" 
+                :title="route.title">{{route.title}}</RouterLink> 
             </nav>
         </header>
     `,
+    data() {
+        return {
+            routes: [
+                { path: '/', title: 'Home' },
+                { path: '/book', title: 'Book' },
+                { path: '/about', title: 'About' }
+            ]
+        }
+    },
     methods: {
     }
 }

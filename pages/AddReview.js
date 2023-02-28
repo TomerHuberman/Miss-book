@@ -9,11 +9,8 @@ export default {
                 <label For="review-name">Add a review</label>
                 <input id="review-name" type="text" v-model="review.userName" placeholder="Full name" required/>
                 <select v-model="review.rate">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option v-for="n in 5" :value="n" :key="n">{{n}}</option>
+                
                 </select>
                 <button>Submit</button>
             </form>

@@ -1,13 +1,14 @@
 import { bookService } from "../services/book.service.js"
 import { googleBookService } from "../services/google-book.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { utilService } from "../services/util.service.js"
 
 export default {
     template: `
         <section class="book-add">
             <h2>Add a book</h2>
             <form @submit.prevent="getGoogleBooks">
-                <input type="text" v-model="searchKey" placeholder="Book name">
+                <input type="text" v-model="searchKey" $input="tryDebounce" placeholder="Book name">
                 <button>search</button>
                 {{searchKey}}
            </form>
@@ -40,7 +41,7 @@ export default {
         getGoogleBooks() {
             googleBookService.query(this.searchKey)
                 .then(books => this.books = books)
-                
+
         }
     }
 }

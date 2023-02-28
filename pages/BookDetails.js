@@ -29,20 +29,22 @@ export default {
                     <RouterLink :to="'/book/' + book.prevBookId">Previous Book</RouterLink> |
                     <RouterLink :to="'/book/' + book.nextBookId">Next Book</RouterLink>
                 </nav>
+
             </div>
             <ul class="clean-list">
                 <li v-for="review in book.reviews" v-if="book.reviews" :key="review.id">
-                        <ReviewPreview :review="review"/>
-                       <button @click="remove(book.id, review.id)">x</button>
-
+                    <ReviewPreview :review="review"/>
+                    <button @click="remove(book.id, review.id)">x</button>
+                    
                     <!-- <pre>
                         {{review}}
                     </pre> -->
                 </li>
             </ul>
         </section>
-    `,
+        `,
     data() {
+        //  router.push({ path: `/user/${username}` }) // -> /user/eduardo 
         return {
             book: null
         }
@@ -89,7 +91,7 @@ export default {
             return this.book.authors.join(', ');
         },
         categories() {
-            return this.book.categories.join(', ');
+            return Array.isArray(this.book.categories) ? this.book.categories.join(', ') :this.book.categories || 'No info'
         },
     },
     watch: {

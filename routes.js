@@ -1,5 +1,5 @@
 import HomePage from './pages/HomePage.js'
-import AboutPage from './pages/AboutPage.js'
+import AboutPage, {AboutTeam, AboutGoal} from './pages/AboutPage.js'
 import BookIndex from './pages/BookIndex.js'
 import BookDetails from './pages/BookDetails.js'
 import BookEdit from './pages/BookEdit.js'
@@ -17,6 +17,16 @@ const options = {
     {
       path: '/about',
       component: AboutPage,
+      children: [
+        {
+            path: 'team',
+            component: AboutTeam
+        },
+        {
+            path: 'goal',
+            component: AboutGoal
+        },
+    ]
     },
     {
       path: '/book',

@@ -9,6 +9,7 @@
 }
 .book-list ul li{
     position: relative;
+    /* display: grid; */
     padding: 10px;
     background-color: darkseagreen;
     box-shadow: 0 0 2px black;
