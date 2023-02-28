@@ -19,7 +19,7 @@ export default {
     data() {
         return {
             isShown: false,
-        };
+        }
     },
     computed: {
         displayTxt() {
@@ -28,4 +28,4 @@ export default {
             return this.txt;
         },
     },
-};
+}

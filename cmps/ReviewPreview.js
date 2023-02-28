@@ -3,7 +3,10 @@ export default {
     template: `
         <article class="review-preview">
             <h2>review by: <span>{{ review.userName }}</span></h2>
-            <h3 >rate: <span>{{ review.rate }}</span></h3>
+           <ul class="clean-list flax">rate: 
+                <li v-for="star in review.rate"> ⭐</li>
+            </ul>
+            <pre v-if="review.txt">{{review.txt}}</pre>
             <h3>added at: <span>{{newDate}}</span></h3>
             
         </article>

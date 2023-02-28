@@ -1,0 +1,22 @@
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    padding: 6px;
+    box-shadow: 0 0 1px black;
+    border-radius: 4px;
+    margin: auto;
+}
+
+.add-review-form label{
+font-size: 1.3em;
+}
+
+.add-review-form button{
+    align-self: end;
+}
+
+.add-review-form >* {
+margin-bottom: 6px;
+}

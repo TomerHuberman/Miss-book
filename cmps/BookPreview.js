@@ -3,8 +3,8 @@ export default {
     template: `
         <article class="book-preview">
             <img v-if="book.listPrice.isOnSale" class="sale" src="assets/img/sale.png" />
-            <h2>{{ book.title }}</h2>
             <img :src="book.thumbnail" />
+            <h2>{{ book.title }}</h2>
             <h3 >Price: <span :class="lowOrHighClass">{{ formattedPrice }}</span></h3>
         </article>
     `,

@@ -8,7 +8,7 @@ export default {
         <section class="book-add">
             <h2>Add a book</h2>
             <form @submit.prevent="getGoogleBooks">
-                <input type="text" v-model="searchKey" $input="tryDebounce" placeholder="Book name">
+                <input type="text" v-model="searchKey" placeholder="Book name">
                 <button>search</button>
                 {{searchKey}}
            </form>

@@ -31,14 +31,11 @@ export default {
                 </nav>
 
             </div>
-            <ul class="clean-list">
-                <li v-for="review in book.reviews" v-if="book.reviews" :key="review.id">
-                    <ReviewPreview :review="review"/>
+            <ul class="clean-list review-list">
+                <li class="" v-for="review in book.reviews" v-if="book.reviews" :key="review.id">
                     <button @click="remove(book.id, review.id)">x</button>
-                    
-                    <!-- <pre>
-                        {{review}}
-                    </pre> -->
+                    <ReviewPreview :review="review"/>
+
                 </li>
             </ul>
         </section>
@@ -88,7 +85,7 @@ export default {
             return new Intl.NumberFormat('en', { style: 'currency', currency: currencyCode }).format(amount)
         },
         authors() {
-            return this.book.authors.join(', ');
+            return Array.isArray(this.book.authors) ? this.book.authors.join(', ') :this.book.authors || 'No info'
         },
         categories() {
             return Array.isArray(this.book.categories) ? this.book.categories.join(', ') :this.book.categories || 'No info'

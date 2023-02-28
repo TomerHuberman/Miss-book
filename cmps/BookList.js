@@ -6,10 +6,13 @@ export default {
         <section class="book-list">
             <ul>
                 <li v-for="book in books" :key="book.id">
-                    <BookPreview :book="book"/>
-                    <RouterLink :to="{name:'details', params:{bookId:book.id}, query:{user:'tomer'}}">Details</RouterLink> |
-                    <RouterLink :to="'/book/edit/'+book.id">Edit</RouterLink> |
                     <button @click="remove(book.id)">x</button>
+                    <BookPreview :book="book"/>
+                    <nav>
+                        <RouterLink :to="{name:'details', params:{bookId:book.id}, query:{user:'tomer'}}">Details</RouterLink>
+                        <RouterLink :to="'/book/edit/'+book.id">Edit</RouterLink>
+                    </nav>
+                
                 </li>
             </ul>
         </section>

@@ -5,9 +5,10 @@ export default {
     // props: ['bookId'],
     template: `
         <article class="add-review">
-            <form @submit.prevent="addReview">
+            <form class="add-review-form" @submit.prevent="addReview">
                 <label For="review-name">Add a review</label>
                 <input id="review-name" type="text" v-model="review.userName" placeholder="Full name" required/>
+                <textarea v-model="review.txt" cols="30" rows="5"></textarea>
                 <select v-model="review.rate">
                     <option v-for="n in 5" :value="n" :key="n">{{n}}</option>
                 
@@ -21,6 +22,7 @@ export default {
             review: {
                 userName: '',
                 rate: 1,
+                txt: '',
                 date: Date.now(),
             },
         }
@@ -41,13 +43,14 @@ export default {
         resetReview() {
             this.review.rate = 1
             this.review.userName = ''
+            this.review.txt = ''
         },
     },
     computed: {
         bookDetails() {
             return '/book/' + this.bookId
         },
-        bookId(){
+        bookId() {
             return this.$route.params.bookId
         }
     }

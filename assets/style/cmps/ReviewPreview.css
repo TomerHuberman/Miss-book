@@ -1,0 +1,43 @@
+.review-preview {
+    background-color: var(--gray1);
+    padding: 8px;
+    border-radius: 7px;
+    box-shadow: 0 0 1px black;
+    margin-bottom: 10px;
+}
+
+.review-preview ul {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 0 7px;
+}
+
+.review-preview h2 {
+    font-size: 1.3rem;
+}
+
+.review-preview h3 {
+    font-size: 0.7rem;
+    color: var(--gray2);
+    text-align: end;
+    margin: 0;
+}
+
+.review-list {
+    position: relative;
+    width: 100%;
+    grid-column: span 2;
+}
+
+.review-list button {
+    opacity: 0;
+}
+
+.review-list pre {
+    padding: 3px;
+    box-shadow: 0 0 1px black;
+}
+
+.review-list li:hover button {
+    opacity: 1;
+}
